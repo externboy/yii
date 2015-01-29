@@ -14,6 +14,8 @@ use yii\filters\AccessControl;
 use frontend\base\BaseFrontController;
 use common\models\Board;
 
+
+
 /**
  * Site controller
  */
@@ -82,10 +84,24 @@ class SiteController extends BaseFrontController
 
 	public function actionIndex()
 	{
-		$params = [];
-		$params['boards'] = $this->buildBoards(0);
+		  $mail = Yii::$app->mailer->compose();
+		  $mail->setTo('andfo@163.com');  
+		  $mail->setSubject("邮件测试");  
+		  $mail->setTextBody('zheshisha ');  
+		  $mail->setHtmlBody("<b><h2>你真的很大呀。兄弟，我天天 在想你呀</h2></b>");    
+		  if($mail->send())  
+		    echo "success";  
+		  else  
+		    echo "failse";   
+		  die(); 
+// 		$mail = new SendMail();
+// 		$rus = $mail->sendOne('andfo@163.com', '标题来了','内容不错','很好呀');
+// 		debug($rus);
+// 		$params = [];
+// 		$params['boards'] = '22';
+// 		debug($this->getUniqueId());
 		
-		return $this->render('index', $params);
+// 		return $this->render('index', $params);
 	}
 
 	public function actionLogin()

@@ -34,6 +34,21 @@ return [
 				],
 			],
 		],
+		'mailer' => [
+			'class' => 'yii\swiftmailer\Mailer',
+			'transport' => [
+			'class' => 'Swift_SmtpTransport',
+			'host' => 'smtp.126.com',
+			'username' => 'externboy@126.com',
+			'password' => 'noneeveryiwgprh',
+			'port' => '25',
+			'encryption' => 'tls',
+		],
+		'messageConfig'=>[
+			'charset'=>'UTF-8',
+			'from'=>['externboy@126.com'=>'admin']
+             ],
+		],
     ],
     'params' => $params,
 ];
